@@ -8,16 +8,26 @@ class DataMatrixEncoder extends \barcode_generator
         theOptions:
             fnc1char (char)
             gs1 (boolean)
+            rect (boolean)
     */
     public function getSvg($data, $theOptions) {
         $options = [];
         if (isset ($theOptions['fnc1char'])) {
             $options['fnc1char'] = $theOptions['fnc1char'];
         }
+        $symbology = 'dmtx';
+        // force gs1 mode (adds fnc1 char as first control character)
         if (isset ($theOptions['gs1'])) {
             $options['gs1'] = $theOptions['gs1'];
+            $symbology = ($theOptions['gs1'] ? 'gs1' : '' ) . $symbology;
         }
-        return $this->render_svg('gs1-dmtx', $data, $options);
+        // force square or rectangle
+        if (isset($theOptions['rect']))
+        {
+            $symbology .= $theOptions['rect'] ? 'r' : 's';
+        }
+        // call parents render function
+        return $this->render_svg($symbology, $data, $options);
     }
 
     protected function dmtx_encode($data, $rect, $fnc1, $fnc1char='') {
@@ -176,6 +186,8 @@ class DataMatrixEncoder extends \barcode_generator
         return $words;
     }
 
+    // ATTENTION!
+    // SUPPORTS ONLY UPPERCASE AND NUMBERS!
     private function convertAsciiToC40($char)
     {
         // between 0…9

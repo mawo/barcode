@@ -26,23 +26,7 @@ DEALINGS IN THE SOFTWARE.
 
 \****************************************************************************/
 
-//if (realpath(__FILE__) == realpath($_SERVER['SCRIPT_FILENAME'])) {
-//	if (isset($_POST['size']) && isset($_POST['data'])) {
-//		$generator = new barcode_generator();
-//		$format = (isset($_POST['format']) ? $_POST['format'] : 'png');
-//		$generator->output_image($format, $_POST['size'], $_POST['data'], $_POST);
-//		exit(0);
-//	}
-//	if (isset($_GET['size']) && isset($_GET['data'])) {
-//		$generator = new barcode_generator();
-//		$format = (isset($_GET['format']) ? $_GET['format'] : 'png');
-//		$generator->output_image($format, $_GET['size'], $_GET['data'], $_GET);
-//		exit(0);
-//	}
-//}
-
 class barcode_generator {
-
 	public function output_image($format, $symbology, $data, $options) {
 		switch (strtolower(preg_replace('/[^A-Za-z0-9]/', '', $format))) {
 			case 'png':
@@ -451,7 +435,7 @@ class barcode_generator {
 			$code['size'][1] * $widths[1] +
 			$code['quiet_zone'][2] * $widths[0]
 		);
-		
+
 		return array($width, $height);
 	}
 
