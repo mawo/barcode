@@ -1,0 +1,19 @@
+{
+    "name": "mawo/barcode",
+    "type": "library",
+    "description": "Create 2D data matrix",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Manuel Wohlers",
+            "email": "code@skanto.de",
+            "homepage": "https://www.skanto.de",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mawo\\Barcode\\": "Classes/"
+        }
+    }
+}
