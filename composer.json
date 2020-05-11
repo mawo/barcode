@@ -17,6 +17,6 @@
         }
     },
     "require": {
-        "mawo/kkbarcode": "dev-master"
+        "mawo/kkbarcode": "~1.0"
     }
 }
