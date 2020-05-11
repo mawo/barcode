@@ -1,7 +1,6 @@
 <?php
 namespace Mawo\Barcode\Encoder;
 
-include(__DIR__ . '/../../lib/barcode/barcode.php');
 class DataMatrixEncoder extends \barcode_generator
 {
     /*
@@ -35,10 +34,10 @@ class DataMatrixEncoder extends \barcode_generator
         $data = $this->dmtx_encode_ec($data, $ec);
         list($h, $w, $mtx) = $this->dmtx_create_matrix($ec, $data);
         return array(
-            'graphic_type' => 'matrix',
-            'quiet_zone' => array(1, 1, 1, 1),
-            'size' => array($w, $h),
-            'blocks' => $mtx
+            'g' => 'm', // graphic type = matrix
+            'q' => array(1, 1, 1, 1), // quiet zone
+            's' => array($w, $h), // size
+            'b' => $mtx // blocks
         );
     }
 
