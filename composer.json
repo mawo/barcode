@@ -15,5 +15,8 @@
         "psr-4": {
             "Mawo\\Barcode\\": "Classes/"
         }
+    },
+    "require": {
+        "mawo/kkbarcode": "dev-master"
     }
 }
